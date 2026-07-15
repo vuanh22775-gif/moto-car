@@ -5,7 +5,7 @@ const isProduction = import.meta.env.PROD;
 
 // Trỏ thẳng sang link Backend của bạn khi ở môi trường production
 const API_URL = isProduction 
-  ? 'https://moto-car-git-main-vuanh22775-gifs-projects.vercel.app/' 
+  ? 'https://moto-ll87eu8sz-vuanh22775-gifs-projects.vercel.app/' 
   : 'http://localhost:5000'; // Hoặc cổng local chạy Backend của bạn
 
 const api = axios.create({
