@@ -6,7 +6,8 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const connectDB = require('./config/database');
-
+// app.listen(...) // <--- Bỏ dòng này đi
+module.exports = app; // Xuất app ra để Vercel sử dụng
 const app = express();
 
 // Middleware
