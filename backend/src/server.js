@@ -14,8 +14,9 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' } // cho phép load ảnh từ client
 }));
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true
+  origin: 'https://moto-car-4pqw-git-main-vuanh22775-gifs-projects.vercel.app', // Địa chỉ trang web Frontend Vercel của bạn
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // Cho phép gửi cookie / token nếu cần
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -44,8 +45,13 @@ app.get('/', (req, res) => {
   res.json({ message: "API Backend đang chạy ổn định!" });
 });
 
+// Thay thế đoạn chạy PORT cũ bằng đoạn này:
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server đang chạy tại port ${PORT}`);
-});
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server đang chạy tại port ${PORT}`);
+  });
+}
+
 module.exports = app; // Xuất app ra để Vercel sử dụng
