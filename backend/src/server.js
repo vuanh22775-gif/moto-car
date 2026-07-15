@@ -39,14 +39,9 @@ app.use('/api/favorites', require('./routes/favoriteRoutes'));
 app.use('/api/upload', require('./routes/uploadRoutes'));
 app.use('/api/notifications', require('./routes/userNotificationRoutes')); // thông báo cho user
 
-// Serve static files từ client/dist
-app.use(express.static(path.join(__dirname, '../../client/dist')));
-
-// Handle React routing — không bắt /api và /uploads
-app.get('*', (req, res) => {
-  if (!req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
-    res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
-  }
+// Thay thế bằng đoạn test đơn giản này:
+app.get('/', (req, res) => {
+  res.json({ message: "API Backend đang chạy ổn định!" });
 });
 
 const PORT = process.env.PORT || 5000;
